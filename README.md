@@ -66,23 +66,45 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ```
-
 EMS-JKS
+├─ .DS_Store
+├─ .editorconfig
+├─ .env
+├─ .env.example
+├─ .git
+├─ .gitattributes
+├─ .gitignore
 ├─ app
 │  ├─ Console
+│  │  └─ Kernel.php
 │  ├─ Exceptions
+│  │  └─ Handler.php
 │  ├─ Http
 │  │  ├─ Controllers
 │  │  │  ├─ ChangePassword.php
 │  │  │  ├─ Controller.php
 │  │  │  ├─ HomeController.php
 │  │  │  ├─ LoginController.php
+│  │  │  ├─ PageController.php
 │  │  │  ├─ RegisterController.php
-│  │  │  ├─ ResetPassword.php
+│  │  │  ├─ ResetPasswordController.php
 │  │  │  └─ UserController.php
 │  │  ├─ Kernel.php
 │  │  ├─ Middleware
+│  │  │  ├─ Authenticate.php
+│  │  │  ├─ EncryptCookies.php
+│  │  │  ├─ PreventRequestsDuringMaintenance.php
+│  │  │  ├─ RedirectIfAuthenticated.php
+│  │  │  ├─ TrimStrings.php
+│  │  │  ├─ TrustHosts.php
+│  │  │  ├─ TrustProxies.php
+│  │  │  ├─ ValidateSignature.php
+│  │  │  └─ VerifyCsrfToken.php
 │  │  └─ Requests
+│  │     ├─ StoreMCard_ApplicationRequest.php
+│  │     ├─ StoreMRegistrationRequest.php
+│  │     ├─ UpdateMCard_ApplicationRequest.php
+│  │     └─ UpdateMRegistrationRequest.php
 │  ├─ Models
 │  │  ├─ ApplicantDetail.php
 │  │  ├─ Consult.php
@@ -96,12 +118,87 @@ EMS-JKS
 │  │  ├─ Wali.php
 │  │  └─ Witness.php
 │  ├─ Notifications
+│  │  └─ ForgotPassword.php
 │  ├─ Policies
+│  │  ├─ MCardApplicationPolicy.php
+│  │  └─ MRegistrationPolicy.php
 │  ├─ Providers
+│  │  ├─ AppServiceProvider.php
+│  │  ├─ AuthServiceProvider.php
+│  │  ├─ BroadcastServiceProvider.php
+│  │  ├─ EventServiceProvider.php
+│  │  └─ RouteServiceProvider.php
 │  └─ View
+│     └─ Components
+│        └─ Alert.php
+├─ argon
+├─ artisan
+├─ bootstrap
+├─ composer.json
+├─ composer.lock
+├─ config
+├─ database
+├─ package-lock.json
+├─ package.json
+├─ phpunit.xml
+├─ public
+│  ├─ .htaccess
+│  ├─ assets
+│  │  ├─ css
+│  │  │  ├─ applicant.css
+│  │  │  └─ staff.css
+│  │  ├─ fonts
+│  │  │  ├─ nucleo-icons.eot
+│  │  │  ├─ nucleo-icons.svg
+│  │  │  ├─ nucleo-icons.ttf
+│  │  │  ├─ nucleo-icons.woff
+│  │  │  ├─ nucleo-icons.woff2
+│  │  │  ├─ nucleo.eot
+│  │  │  ├─ nucleo.ttf
+│  │  │  ├─ nucleo.woff
+│  │  │  └─ nucleo.woff2
+│  │  └─ js
+│  │     ├─ argon-dashboard.js
+│  │     ├─ argon-dashboard.js.LICENSE.txt
+│  │     ├─ core
+│  │     │  ├─ bootstrap.bundle.min.js
+│  │     │  ├─ bootstrap.min.js
+│  │     │  └─ popper.min.js
+│  │     └─ plugins
+│  │        ├─ bootstrap-notify.js
+│  │        ├─ Chart.extension.js
+│  │        ├─ chartjs.min.js
+│  │        ├─ flatpickr.min.js
+│  │        ├─ perfect-scrollbar.min.js
+│  │        └─ smooth-scrollbar.min.js
+│  ├─ docs
+│  ├─ favicon.ico
+│  ├─ img
+│  ├─ index.php
+│  ├─ mix-manifest.json
+│  ├─ robots.txt
+│  ├─ screens
+│  │  ├─ change-password.png
+│  │  ├─ dashboard.png
+│  │  ├─ login.png
+│  │  ├─ profile.png
+│  │  ├─ register.png
+│  │  └─ reset-password.png
+│  └─ uploads
+│     ├─ Screenshot 2022-11-09 001743.png
+│     ├─ SDW-PACKAGE (2).png
+│     ├─ SDW-PACKAGE (3).png
+│     ├─ SDW-PACKAGE (4).png
+│     ├─ SDW-PACKAGE (5).png
+│     └─ SDW-PACKAGE (6).png
+├─ README.md
 ├─ resources
 │  ├─ css
+│  │  └─ app.css
 │  ├─ js
+│  │  ├─ app.js
+│  │  ├─ bootstrap.js
+│  │  └─ custom.js
 │  ├─ scss
 │  └─ views
 │     ├─ auth
@@ -133,10 +230,25 @@ EMS-JKS
 │     │  │  └─ guest
 │     │  │     └─ navbar.blade.php
 │     │  └─ staff.blade.php
+│     ├─ pages
+│     │  ├─ create.blade.php
+│     │  ├─ dashboard.blade.php
+│     │  ├─ dashboardStaff.blade.php
+│     │  ├─ form-example.blade.php
+│     │  └─ manage.blade.php
+│     └─ user
+│        ├─ create.blade.php
+│        ├─ edit.blade.php
+│        ├─ manage.blade.php
+│        └─ show.blade.php
 ├─ routes
 │  ├─ api.php
 │  ├─ channels.php
 │  ├─ console.php
 │  └─ web.php
+├─ storage
+├─ tests
+├─ vite.config.js
+└─ webpack.mix.js
 
 ```
